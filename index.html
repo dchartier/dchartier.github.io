@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Chartier - Innovation & Product Leadership</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header/Navigation */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #2c3e50;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 49px, rgba(52, 211, 253, 0.3) 49px, rgba(52, 211, 253, 0.3) 50px),
+                repeating-linear-gradient(90deg, transparent, transparent 49px, rgba(52, 211, 253, 0.3) 49px, rgba(52, 211, 253, 0.3) 50px);
+            background-size: 50px 50px;
+            opacity: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(52, 211, 253, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 0 2px rgba(102, 126, 234, 0.5);
+            object-fit: cover;
+            object-position: center 20%;
+            background: #f8f9fa;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #667eea;
+            margin: 1rem auto;
+        }
+
+        /* Leadership Section */
+        .leadership {
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leadership::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 49px, rgba(102, 126, 234, 0.2) 49px, rgba(102, 126, 234, 0.2) 50px),
+                repeating-linear-gradient(90deg, transparent, transparent 49px, rgba(102, 126, 234, 0.2) 49px, rgba(102, 126, 234, 0.2) 50px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .leadership-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .leadership-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .competencies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .competency {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .competency:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .competency-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .competency h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .projects::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to top, rgba(52, 211, 253, 0.15), transparent);
+            pointer-events: none;
+        }
+
+        .project {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-title {
+            flex: 1;
+        }
+
+        .project-title h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-role {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .project-years {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .project-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .project-content h4 {
+            color: #2c3e50;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .project-content p, .project-content ul {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .project-content ul {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+
+        .project-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tech-badge {
+            background: #e9ecef;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #495057;
+        }
+
+        /* Recommendations Section */
+        .recommendations {
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .recommendations::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 49px, rgba(102, 126, 234, 0.15) 49px, rgba(102, 126, 234, 0.15) 50px),
+                repeating-linear-gradient(-45deg, transparent, transparent 49px, rgba(102, 126, 234, 0.15) 49px, rgba(102, 126, 234, 0.15) 50px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .rec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .recommendation {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .rec-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .rec-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #667eea;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .rec-info h4 {
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+
+        .rec-title {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .rec-text {
+            color: #555;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 49px, rgba(52, 211, 253, 0.25) 49px, rgba(52, 211, 253, 0.25) 50px),
+                repeating-linear-gradient(90deg, transparent, transparent 49px, rgba(52, 211, 253, 0.25) 49px, rgba(52, 211, 253, 0.25) 50px);
+            background-size: 50px 50px;
+            opacity: 1;
+        }
+
+        .contact-options {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-btn {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-info {
+            margin-top: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .rec-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Daniel Chartier</div>
+            <ul class="nav-links">
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#projects">Portfolio</a></li>
+                <li><a href="#recommendations">Recommendations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="https://drive.google.com/thumbnail?id=1JBInTtmz_G93LCHYe84pnXKMhYgS35z_&sz=w400" alt="Daniel Chartier" class="hero-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27200%27 height=%27200%27%3E%3Crect width=%27200%27 height=%27200%27 fill=%27%23667eea%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 text-anchor=%27middle%27 dy=%27.3em%27 fill=%27white%27 font-size=%2760%27 font-family=%27Arial%27%3EDC%3C/text%3E%3C/svg%3E'">
+                <div>
+                    <h1>Daniel Chartier</h1>
+                    <p class="tagline">Driving Revenue Through Disciplined Innovation and Execution</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">$100M+</div>
+                        <div class="stat-label">Revenue Impact</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Years Leadership</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">$10M+</div>
+                        <div class="stat-label">Cost Savings</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">30%</div>
+                        <div class="stat-label">Market Capture</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Philosophy -->
+    <section id="leadership" class="leadership">
+        <div class="container">
+            <h2 class="section-title">Leadership Philosophy</h2>
+            <div class="leadership-content">
+                <p>Innovation isn't magic—it's a disciplined process. Throughout my career, I've built a framework centered on staged development with clear decision gateways at critical points. This approach allows teams to evaluate progress objectively, pivot when needed, or accelerate with confidence based on real data rather than gut feeling.</p>
+
+                <p>I believe the best leaders hire exceptional people and empower them to excel. My role is to provide strategic direction, remove obstacles, and maintain oversight without micromanagement. This balance of autonomy and accountability has consistently enabled my teams to exceed expectations and deliver market-leading products.</p>
+
+                <p>Speed matters in today's markets. I favor action over endless analysis—making informed decisions with available data and adjusting course as we learn. This bias for execution has generated multi-million dollar products, driven over $10M in operational savings, and helped organizations stay ahead of their competition.</p>
+            </div>
+
+            <div class="competencies">
+                <div class="competency">
+                    <div class="competency-icon">🚀</div>
+                    <h3>Strategic Innovation</h3>
+                    <p>Staged-gate processes with data-driven decision points</p>
+                </div>
+                <div class="competency">
+                    <div class="competency-icon">👥</div>
+                    <h3>Team Empowerment</h3>
+                    <p>Hire exceptional talent and enable them to excel</p>
+                </div>
+                <div class="competency">
+                    <div class="competency-icon">⚡</div>
+                    <h3>Bias for Action</h3>
+                    <p>Move fast with available data, adapt as you learn</p>
+                </div>
+                <div class="competency">
+                    <div class="competency-icon">📊</div>
+                    <h3>Data-Driven Execution</h3>
+                    <p>Metrics-focused approach to product development</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Portfolio -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+
+            <!-- Project 1: Hancock Software -->
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-title">
+                        <h3>Comprehensive Weatherization Platform</h3>
+                        <p class="project-role">Vice President, Product Development | Hancock Software</p>
+                    </div>
+                    <div class="project-years">2009-2022</div>
+                </div>
+
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">30%</span>
+                        <span class="metric-label">National Market Share</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">10,000+</span>
+                        <span class="metric-label">Active Users</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$B+</span>
+                        <span class="metric-label">Transactions Processed</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">100%</span>
+                        <span class="metric-label">Customer Satisfaction</span>
+                    </div>
+                </div>
+
+                <div class="project-content">
+                    <h4>The Challenge</h4>
+                    <p>The low-income weatherization market was fragmented, relying on disconnected tools and manual processes. Contractors needed an end-to-end solution that could handle everything from energy evaluation through project completion.</p>
+
+                    <h4>The Solution</h4>
+                    <p>I transformed a conceptual idea into a comprehensive suite of mobile and web cloud SaaS offerings that worked seamlessly as a single unified application. The platform addressed the complete workflow:</p>
+                    <ul>
+                        <li>Energy evaluation and auditing</li>
+                        <li>Intelligent decision support systems</li>
+                        <li>Material procurement and management</li>
+                        <li>Project tracking and completion</li>
+                    </ul>
+
+                    <h4>Mobile-First Architecture</h4>
+                    <p>Built a sophisticated mobile-first architecture supporting both iOS and Android platforms with full offline capability. Field technicians could conduct energy audits, make decisions, and manage projects in areas with no connectivity—the application would automatically synchronize with the cloud when connection was restored. This offline-first design was critical for the weatherization market where work often occurred in remote or rural locations.</p>
+
+                    <h4>Leadership Impact</h4>
+                    <p>Built and led a team of 20 through agile transformation, implementing CI/CD pipelines that enabled weekly releases—a dramatic shift from traditional enterprise software cycles.</p>
+
+                    <h4>Business Impact</h4>
+                    <p>Captured 30%+ of the nationwide low-income weatherization market, scaled to support 10,000+ users and billions of dollars in transactions, launched complementary small business product line significantly expanding revenue, and achieved 100% customer satisfaction through continuous delivery and responsive iteration.</p>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">iOS</span>
+                        <span class="tech-badge">Android</span>
+                        <span class="tech-badge">Cloud SaaS</span>
+                        <span class="tech-badge">Offline-First</span>
+                        <span class="tech-badge">Agile/CI/CD</span>
+                        <span class="tech-badge">AWS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Iron Mountain Innovation -->
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-title">
+                        <h3>Innovation & Emerging Products</h3>
+                        <p class="project-role">Director Product Management - Innovation | Iron Mountain</p>
+                    </div>
+                    <div class="project-years">2022-2025</div>
+                </div>
+
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">$MM+</span>
+                        <span class="metric-label">Revenue Generated</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$10M+</span>
+                        <span class="metric-label">Cost Savings</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">50%</span>
+                        <span class="metric-label">Sales Time Increase</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$100M+</span>
+                        <span class="metric-label">Scale Potential</span>
+                    </div>
+                </div>
+
+                <div class="project-content">
+                    <h4>The Challenge</h4>
+                    <p>Iron Mountain needed to identify and validate its next generation of products in rapidly evolving markets including AI/ML, digital pathology, and intelligent storage solutions.</p>
+
+                    <h4>The Solution</h4>
+                    <p>Led a cross-functional innovation team through systematic evaluation of emerging technologies and market opportunities. Established a gated innovation process that balanced exploration with disciplined execution.</p>
+
+                    <h4>Major Initiatives</h4>
+                    <ul>
+                        <li><strong>Digital Pathology Platform:</strong> Identified and validated market opportunity in healthcare digital transformation</li>
+                        <li><strong>Tiered Storage Research:</strong> Led research into intelligent storage optimization using AI/ML—identifying significant market opportunity in automated data lifecycle management</li>
+                        <li><strong>Sustainability Research:</strong> Conducted comprehensive research across multiple sustainability domains including circular economy models, digital product passports for supply chain transparency, textile recycling innovations, hydrogen applications for portable energy solutions, emissions calculators for carbon footprint tracking, and molecular recycling technologies</li>
+                    </ul>
+
+                    <h4>Leadership Approach</h4>
+                    <p>Applied staged-gate methodology to manage portfolio of innovations—each with clear go/no-go decision points based on market validation, technical feasibility, and business case strength.</p>
+
+                    <h4>Business Impact</h4>
+                    <p>Generated multi-million dollar revenue from validated product concepts with $100M+ scale potential. Developed innovative sustainability frameworks that quantified benefits of emerging technologies, enabling data-driven decision making for environmental initiatives. Built repeatable innovation framework adopted across the organization.</p>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">AI/ML</span>
+                        <span class="tech-badge">RAG Architecture</span>
+                        <span class="tech-badge">Digital Pathology</span>
+                        <span class="tech-badge">Data Analytics</span>
+                        <span class="tech-badge">Market Validation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: LiveVault -->
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-title">
+                        <h3>Cloud Backup Pioneer</h3>
+                        <p class="project-role">Vice President, Product Development | LiveVault (Iron Mountain Digital)</p>
+                    </div>
+                    <div class="project-years">2001-2006</div>
+                </div>
+
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">$22M</span>
+                        <span class="metric-label">VC Funding Secured</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$50M</span>
+                        <span class="metric-label">Acquisition Value</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">97%</span>
+                        <span class="metric-label">Customer Satisfaction</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">1 PB+</span>
+                        <span class="metric-label">Data Managed</span>
+                    </div>
+                </div>
+
+                <div class="project-content">
+                    <h4>The Challenge</h4>
+                    <p>Build one of the first cloud-based backup and disaster recovery SaaS solutions before "cloud" was even common terminology. The market was skeptical of storing critical data off-premise.</p>
+
+                    <h4>The Solution</h4>
+                    <p>Led product development from ground zero—defining technical architecture, business requirements, security protocols, and performance standards. Created proof of concept, designed UI/UX, and built the foundational platform.</p>
+
+                    <h4>Technical Innovation</h4>
+                    <ul>
+                        <li>Real-time backup to the cloud (revolutionary for the time)</li>
+                        <li>Record-breaking RPO (Recovery Point Objective) and RTO (Recovery Time Objective) performance</li>
+                        <li>Scaled database to handle billions of transactions and manage over a petabyte of data</li>
+                    </ul>
+
+                    <h4>Leadership Approach</h4>
+                    <p>Pioneered the use of Agile methodologies in enterprise backup software—a domain traditionally dominated by waterfall development. Implemented iterative sprints, continuous integration, and rapid feedback loops that allowed the team to adapt to market needs while maintaining the reliability and security required for mission-critical data protection.</p>
+
+                    <p>Delivered a complex, first-of-its-kind product on time with more features than originally planned—demonstrating both execution discipline and the ability to innovate within constraints.</p>
+
+                    <h4>Business Impact</h4>
+                    <p>Secured $22M in venture capital funding, achieved 97% customer satisfaction rating, and contributed to the company's acquisition by Iron Mountain Digital for $50M.</p>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">Cloud SaaS</span>
+                        <span class="tech-badge">Real-time Backup</span>
+                        <span class="tech-badge">Disaster Recovery</span>
+                        <span class="tech-badge">Agile</span>
+                        <span class="tech-badge">Petabyte Scale</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations -->
+    <section id="recommendations" class="recommendations">
+        <div class="container">
+            <h2 class="section-title">LinkedIn Recommendations</h2>
+            <div class="rec-grid">
+                <div class="recommendation">
+                    <div class="rec-header">
+                        <div class="rec-avatar">NR</div>
+                        <div class="rec-info">
+                            <h4>Nicole Reineke</h4>
+                            <p class="rec-title">Chief Innovation Officer | SVP, Innovation | Top 1% Inventor</p>
+                            <p class="rec-title" style="font-size: 0.85rem; margin-top: 0.25rem;">Nicole managed Daniel directly</p>
+                        </div>
+                    </div>
+                    <p class="rec-text">"I've had the privilege of working with Dan Chartier at three different companies, and I was excited to bring him into Iron Mountain because I knew the impact he could make. Dan drives innovation while improving sustainability, uncovering efficiencies that reduce both costs and have a net positive environmental impact. His expertise in sustainability is built on over a decade of experience with environmental assessments at Hancock Software, giving him a deep understanding of how to turn complex data into tools for action. At Iron Mountain, he played a key role in our innovation team, bringing fresh ideas and finding completely new ways to create win-win scenarios. Beyond his technical expertise, Dan has a great connection with customers. He knows how to translate sustainability goals into real business activities, making him an asset to any organization looking for measurable, meaningful change."</p>
+                </div>
+
+                <div class="recommendation">
+                    <div class="rec-header">
+                        <div class="rec-avatar">WA</div>
+                        <div class="rec-info">
+                            <h4>Will Allen</h4>
+                            <p class="rec-title">102 Patents, Innovation and Technology Commercialization</p>
+                            <p class="rec-title" style="font-size: 0.85rem; margin-top: 0.25rem;">Will worked with Daniel on the same team</p>
+                        </div>
+                    </div>
+                    <p class="rec-text">"Daniel 'Dan' Chartier and I worked together as part of Iron Mountain's Global Innovation Team. We collaborated on efforts related to Sustainability, and also Training talented managers to boost their career growth potentials. Dan's Leadership abilities have been honed over decades heading technical organizations. He has extensive Startup Experience, and a solid history of Innovation. In particular, I saw him develop Models to Quantify benefits of applying New Technologies to Sustainability efforts. Importantly, Dan is a wonderful colleague, and I would be thrilled to be a part of any team where he is involved."</p>
+                </div>
+
+                <div class="recommendation">
+                    <div class="rec-header">
+                        <div class="rec-avatar">SS</div>
+                        <div class="rec-info">
+                            <h4>Shailendra Pratap Singh</h4>
+                            <p class="rec-title">20+ Years in QA/QE Consulting | Empathetic, Outcome-Driven Leader</p>
+                            <p class="rec-title" style="font-size: 0.85rem; margin-top: 0.25rem;">Shailendra reported directly to Daniel</p>
+                        </div>
+                    </div>
+                    <p class="rec-text">"Dan is an inspirational leader who knows how to build great teams. He is a committed, hard working and detailed oriented individual. He brings multitude of strengths as part of his personality. He is a good decision maker, he tries to analyze every situation objectively before coming to a conclusion. It was my pleasure to work under his leadership for many years."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Let's Connect</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Interested in discussing innovation leadership, product development, or potential opportunities?</p>
+            
+            <div class="contact-options">
+                <a href="mailto:daniel.chartier@gamutinno.com" class="contact-btn">📧 Email Me</a>
+                <a href="https://www.linkedin.com/in/danielchartier/" target="_blank" class="contact-btn">💼 LinkedIn</a>
+                <a href="https://docs.google.com/document/d/1Vio1hDPyOfYVMi-x0wN9cmCxUHz2Op9_01RM1uCQymU/export?format=pdf" class="contact-btn" target="_blank">📄 Download Resume</a>
+            </div>
+
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:daniel.chartier@gamutinno.com">daniel.chartier@gamutinno.com</a></p>
+                <p><strong>Phone:</strong> (508) 463-8583</p>
+                <p><strong>Location:</strong> Brooklyn, CT</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Daniel Chartier. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
