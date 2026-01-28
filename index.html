@@ -289,14 +289,6 @@
             font-weight: 600;
         }
 
-        .project-years {
-            background: #667eea;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-
         .project-metrics {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -350,6 +342,7 @@
             gap: 1rem;
             flex-wrap: wrap;
             margin-top: 1rem;
+            justify-content: center;
         }
 
         .tech-badge {
@@ -539,7 +532,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <img src="Dan headshot 122016.JPG" alt="Daniel Chartier" class="hero-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27200%27 height=%27200%27%3E%3Crect width=%27200%27 height=%27200%27 fill=%27%23667eea%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 text-anchor=%27middle%27 dy=%27.3em%27 fill=%27white%27 font-size=%2760%27 font-family=%27Arial%27%3EDC%3C/text%3E%3C/svg%3E'">
+                <img src="https://drive.google.com/thumbnail?id=1JBInTtmz_G93LCHYe84pnXKMhYgS35z_&sz=w400" alt="Daniel Chartier" class="hero-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27200%27 height=%27200%27%3E%3Crect width=%27200%27 height=%27200%27 fill=%27%23667eea%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 text-anchor=%27middle%27 dy=%27.3em%27 fill=%27white%27 font-size=%2760%27 font-family=%27Arial%27%3EDC%3C/text%3E%3C/svg%3E'">
                 <div>
                     <h1>Daniel Chartier</h1>
                     <p class="tagline">Driving Revenue Through Disciplined Innovation and Execution</p>
@@ -608,14 +601,73 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
 
-            <!-- Project 1: Hancock Software -->
+            <!-- Project 1: LiveVault -->
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-title">
+                        <h3>Cloud Backup Pioneer</h3>
+                        <p class="project-role">Vice President, Product Development | LiveVault (Iron Mountain Digital)</p>
+                    </div>
+                </div>
+
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">$22M</span>
+                        <span class="metric-label">VC Funding Secured</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$50M</span>
+                        <span class="metric-label">Acquisition Value</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">97%</span>
+                        <span class="metric-label">Customer Satisfaction</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">1 PB+</span>
+                        <span class="metric-label">Data Managed</span>
+                    </div>
+                </div>
+
+                <div class="project-content">
+                    <h4>The Challenge</h4>
+                    <p>Build one of the first cloud-based backup and disaster recovery SaaS solutions before "cloud" was even common terminology. The market was skeptical of storing critical data off-premise.</p>
+
+                    <h4>The Solution</h4>
+                    <p>Led product development from ground zero—defining technical architecture, business requirements, security protocols, and performance standards. Created proof of concept, designed UI/UX, and built the foundational platform.</p>
+
+                    <h4>Technical Innovation</h4>
+                    <ul>
+                        <li>Real-time backup to the cloud (revolutionary for the time)</li>
+                        <li>Record-breaking RPO (Recovery Point Objective) and RTO (Recovery Time Objective) performance</li>
+                        <li>Scaled database to handle billions of transactions and manage over a petabyte of data</li>
+                    </ul>
+
+                    <h4>Leadership Approach</h4>
+                    <p>Pioneered the use of Agile methodologies in enterprise backup software—a domain traditionally dominated by waterfall development. Implemented iterative sprints, continuous integration, and rapid feedback loops that allowed the team to adapt to market needs while maintaining the reliability and security required for mission-critical data protection.</p>
+
+                    <p>Delivered a complex, first-of-its-kind product on time with more features than originally planned—demonstrating both execution discipline and the ability to innovate within constraints.</p>
+
+                    <h4>Business Impact</h4>
+                    <p>Secured $22M in venture capital funding, achieved 97% customer satisfaction rating, and contributed to the company's acquisition by Iron Mountain Digital for $50M.</p>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">Cloud SaaS</span>
+                        <span class="tech-badge">Real-time Backup</span>
+                        <span class="tech-badge">Disaster Recovery</span>
+                        <span class="tech-badge">Agile</span>
+                        <span class="tech-badge">Petabyte Scale</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Hancock Software -->
             <div class="project">
                 <div class="project-header">
                     <div class="project-title">
                         <h3>Comprehensive Weatherization Platform</h3>
                         <p class="project-role">Vice President, Product Development | Hancock Software</p>
                     </div>
-                    <div class="project-years">2009-2022</div>
                 </div>
 
                 <div class="project-metrics">
@@ -670,14 +722,13 @@
                 </div>
             </div>
 
-            <!-- Project 2: Iron Mountain Innovation -->
+            <!-- Project 3: Iron Mountain Innovation -->
             <div class="project">
                 <div class="project-header">
                     <div class="project-title">
                         <h3>Innovation & Emerging Products</h3>
                         <p class="project-role">Director Product Management - Innovation | Iron Mountain</p>
                     </div>
-                    <div class="project-years">2022-2025</div>
                 </div>
 
                 <div class="project-metrics">
@@ -728,74 +779,13 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Project 3: LiveVault -->
-            <div class="project">
-                <div class="project-header">
-                    <div class="project-title">
-                        <h3>Cloud Backup Pioneer</h3>
-                        <p class="project-role">Vice President, Product Development | LiveVault (Iron Mountain Digital)</p>
-                    </div>
-                    <div class="project-years">2001-2006</div>
-                </div>
-
-                <div class="project-metrics">
-                    <div class="metric">
-                        <span class="metric-value">$22M</span>
-                        <span class="metric-label">VC Funding Secured</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">$50M</span>
-                        <span class="metric-label">Acquisition Value</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">97%</span>
-                        <span class="metric-label">Customer Satisfaction</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">1 PB+</span>
-                        <span class="metric-label">Data Managed</span>
-                    </div>
-                </div>
-
-                <div class="project-content">
-                    <h4>The Challenge</h4>
-                    <p>Build one of the first cloud-based backup and disaster recovery SaaS solutions before "cloud" was even common terminology. The market was skeptical of storing critical data off-premise.</p>
-
-                    <h4>The Solution</h4>
-                    <p>Led product development from ground zero—defining technical architecture, business requirements, security protocols, and performance standards. Created proof of concept, designed UI/UX, and built the foundational platform.</p>
-
-                    <h4>Technical Innovation</h4>
-                    <ul>
-                        <li>Real-time backup to the cloud (revolutionary for the time)</li>
-                        <li>Record-breaking RPO (Recovery Point Objective) and RTO (Recovery Time Objective) performance</li>
-                        <li>Scaled database to handle billions of transactions and manage over a petabyte of data</li>
-                    </ul>
-
-                    <h4>Leadership Approach</h4>
-                    <p>Pioneered the use of Agile methodologies in enterprise backup software—a domain traditionally dominated by waterfall development. Implemented iterative sprints, continuous integration, and rapid feedback loops that allowed the team to adapt to market needs while maintaining the reliability and security required for mission-critical data protection.</p>
-
-                    <p>Delivered a complex, first-of-its-kind product on time with more features than originally planned—demonstrating both execution discipline and the ability to innovate within constraints.</p>
-
-                    <h4>Business Impact</h4>
-                    <p>Secured $22M in venture capital funding, achieved 97% customer satisfaction rating, and contributed to the company's acquisition by Iron Mountain Digital for $50M.</p>
-
-                    <div class="tech-stack">
-                        <span class="tech-badge">Cloud SaaS</span>
-                        <span class="tech-badge">Real-time Backup</span>
-                        <span class="tech-badge">Disaster Recovery</span>
-                        <span class="tech-badge">Agile</span>
-                        <span class="tech-badge">Petabyte Scale</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- Recommendations -->
     <section id="recommendations" class="recommendations">
         <div class="container">
-            <h2 class="section-title">LinkedIn Recommendations</h2>
+            <h2 class="section-title">Recommendations</h2>
             <div class="rec-grid">
                 <div class="recommendation">
                     <div class="rec-header">
